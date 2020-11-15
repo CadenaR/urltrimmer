@@ -26,12 +26,12 @@ const useStyles = makeStyles((theme) => ({
   button: {
     width: "100%",
     height: "50px",
-    marginLeft: "2rem"
+    marginLeft: "2rem",
   },
   text: {
     textAlign: "center",
     fontSize: "30px",
-    marginTop: "2rem"
+    marginTop: "2rem",
   },
 }));
 
@@ -42,16 +42,18 @@ const Index = () => {
   const classes = useStyles();
 
   const trimUrl = (url) => {
-    axios
-      .post(`http://localhost:3001/url`, {
-        original: url,
-      })
-      .then(function (response) {
-        setHash("http://localhost:3000/" + response.data.hash);
-      })
-      .catch((error) => {
-        console.log("There was an error: ", error);
-      });
+    if (url) {
+      axios
+        .post(`http://localhost:3001/url`, {
+          original: url,
+        })
+        .then(function (response) {
+          setHash("http://localhost:3000/" + response.data.hash);
+        })
+        .catch((error) => {
+          console.log("There was an error: ", error);
+        });
+    }
   };
 
   return (
@@ -73,7 +75,7 @@ const Index = () => {
             onClick={() => trimUrl(url)}
             className={classes.button}
           >
-            Create
+            Acortar
           </Button>
         </Grid>
         <Grid item sm={8} className={classes.text}>
