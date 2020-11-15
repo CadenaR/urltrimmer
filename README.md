@@ -18,7 +18,7 @@ node server.js
 # Proyecto React
 
 ```shell
-cd basic-todo-app
+cd front
 ```
 
 ## Instalación
